@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:quickmart/AppRoutes/approutes.dart';
 
 
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -15,8 +17,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "MarketPlace App",
-      initialRoute: AppRoutes.splashscreen,
-      getPages: AppRoutes.routes,
+    //   home: const SellerProfileScreen(), 
+     initialRoute: AppRoutes.splashscreen,
+     getPages: AppRoutes.routes,
     );
   }
 }

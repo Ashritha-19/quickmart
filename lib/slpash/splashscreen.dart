@@ -94,38 +94,38 @@ class SplashScreen extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Bottom Buttons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                           Get.toNamed(AppRoutes.signIn);
-                        },
-                        child: Text(
-                          "Sign In",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: ColorConstants.blackish,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      TextButton(
-                        onPressed: () {
-                          Get.toNamed(AppRoutes.createAccount);
-                        },
-                        child: Text(
-                          "Create Account",
-                          style: GoogleFonts.poppins(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: ColorConstants.blackish,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     TextButton(
+                  //       onPressed: () {
+                  //          Get.toNamed(AppRoutes.signIn);
+                  //       },
+                  //       child: Text(
+                  //         "Sign In",
+                  //         style: GoogleFonts.poppins(
+                  //           fontSize: 14,
+                  //           fontWeight: FontWeight.w600,
+                  //           color: ColorConstants.blackish,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     const SizedBox(width: 20),
+                  //     TextButton(
+                  //       onPressed: () {
+                  //         Get.toNamed(AppRoutes.createAccount);
+                  //       },
+                  //       child: Text(
+                  //         "Create Account",
+                  //         style: GoogleFonts.poppins(
+                  //           fontSize: 14,
+                  //           fontWeight: FontWeight.w600,
+                  //           color: ColorConstants.blackish,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   const SizedBox(height: 20),
                 ],
               ),
@@ -180,7 +180,9 @@ class SplashScreen extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(AppRoutes.signIn);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: buttonColor,
                 foregroundColor: textColor,

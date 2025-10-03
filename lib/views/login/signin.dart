@@ -1,8 +1,10 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quickmart/AppRoutes/approutes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quickmart/constants/colorconstants.dart';
 
@@ -71,7 +73,7 @@ class _SignInScreenState extends State<SignInScreen> {
       body: Stack(
         children: [
           // Background image
-          Container(
+          Container(  
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/bg.png"),
@@ -114,65 +116,69 @@ class _SignInScreenState extends State<SignInScreen> {
                   const SizedBox(height: 30),
 
                   // Buyer / Seller toggle
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorConstants.lightGray.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: ColorConstants.blueShade,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(Icons.shopping_bag,
-                                      color: ColorConstants.white),
-                                  const SizedBox(width: 5),
-                                  Text(
-                                    "Buyer",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: ColorConstants.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(Icons.store,
-                                      color: ColorConstants.gray),
-                                  const SizedBox(width: 5),
-                                  Text(
-                                    "Seller",
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: ColorConstants.gray,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: ColorConstants.lightGray.withOpacity(0.2),
+                  //     borderRadius: BorderRadius.circular(12),
+                  //   ),
+                  //   child: Row(
+                  //     children: [
+                  //       Expanded(
+                  //         child: Container(
+                  //           decoration: BoxDecoration(
+                  //             color: ColorConstants.blueShade,
+                  //             borderRadius: BorderRadius.circular(12),
+                  //           ),
+                  //           padding: const EdgeInsets.symmetric(vertical: 12),
+                  //           child: Center(
+                  //             child: Row(
+                  //               mainAxisSize: MainAxisSize.min,
+                  //               children: [
+                  //                 const Icon(
+                  //                   Icons.shopping_bag,
+                  //                   color: ColorConstants.white,
+                  //                 ),
+                  //                 const SizedBox(width: 5),
+                  //                 Text(
+                  //                   "Buyer",
+                  //                   style: GoogleFonts.poppins(
+                  //                     fontSize: 16,
+                  //                     fontWeight: FontWeight.w600,
+                  //                     color: ColorConstants.white,
+                  //                   ),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //       Expanded(
+                  //         child: Container(
+                  //           padding: const EdgeInsets.symmetric(vertical: 12),
+                  //           child: Center(
+                  //             child: Row(
+                  //               mainAxisSize: MainAxisSize.min,
+                  //               children: [
+                  //                 const Icon(
+                  //                   Icons.store,
+                  //                   color: ColorConstants.gray,
+                  //                 ),
+                  //                 const SizedBox(width: 5),
+                  //                 Text(
+                  //                   "Seller",
+                  //                   style: GoogleFonts.poppins(
+                  //                     fontSize: 16,
+                  //                     color: ColorConstants.gray,
+                  //                   ),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   const SizedBox(height: 30),
 
                   // Sign in box
@@ -244,12 +250,18 @@ class _SignInScreenState extends State<SignInScreen> {
 
                                 if (emailController.text == savedEmail &&
                                     passwordController.text == savedPassword) {
-                                  _showCustomSnackbar("Success",
-                                      "Sign in successful!", true);
-                                  // Get.to(() => HomeScreen());
+                                  _showCustomSnackbar(
+                                    "Success",
+                                    "Sign in successful!",
+                                    true,
+                                  );
+                                   Get.toNamed(AppRoutes.sellerDashboard);
                                 } else {
-                                  _showCustomSnackbar("Error",
-                                      "Invalid email or password!", false);
+                                  _showCustomSnackbar(
+                                    "Error",
+                                    "Invalid email or password!",
+                                    false,
+                                  );
                                 }
                               }
                             },
@@ -268,7 +280,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   const SizedBox(height: 20),
 
-                  // Footer
                   Center(
                     child: Text.rich(
                       TextSpan(
@@ -283,6 +294,10 @@ class _SignInScreenState extends State<SignInScreen> {
                               color: ColorConstants.blueShade,
                               fontWeight: FontWeight.w600,
                             ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                Get.toNamed(AppRoutes.createAccount);
+                              },
                           ),
                         ],
                       ),
